@@ -1,16 +1,24 @@
 {% extends "index.html" %}
 {% block content %}
     {% for post in posts %}
-        <article class="media content-section">
-            <i class="fas fa-user-astronaut fa-5x"></i>
-          <div class="media-body">
+        <article class="media content-section ml-3 mb-4">
+            <i class="fas fa-user-astronaut fa-4x"></i>
+          <div class="media-body ml-3">
             <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.author }}</a>
+              <a class="mr-3" href="#">{{ post.author }}</a>
               <small class="text-muted">{{ post.date_posted }}</small>
             </div>
-            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
+            <p class="article-content ad-right">{{ post.content }}</p>
           </div>
         </article>
     {% endfor %}
+
+    <footer class="sticky-footer">
+      <div class="chat-form my-auto">
+          <button class="add-picture"><i class="fas fa-camera fa-2x"></i></button>
+          <textarea type="write message" id="inputMessage" class="form-control" placeholder="write message" autofocus="autofocus"></textarea>
+          <button><i class="fas fa-comment fa-2x"></i></button>
+          </div>
+    </footer>
+
 {% endblock content %}
