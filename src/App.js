@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Messages from './components/Messages';
+import Groups from './components/Groups';
 import Header from './components/layout/Header';
+import Modal from './components/Modal';
 import AddMessage from './components/AddMessage';
 import About from './components/pages/About';
+
 import uuid from 'uuid';
 import './App.css';
 
@@ -23,7 +26,6 @@ class App extends Component {
           date: '12/apr/2018',
           body: 'Hey there',
           key: 'friend',
-          show: false
         },
         {
           id: uuid.v4(),
@@ -31,7 +33,6 @@ class App extends Component {
           date: '12/apr/2018',
           body: 'what up',
           key: 'friend',
-          show: false
         },
         {
           id: 3,
@@ -39,12 +40,27 @@ class App extends Component {
           date: '12/apr/2018',
           body: 'Hey',
           key: 'self',
-          show: false
         }
       ],
-      searchText: '',
-      searchResult: [],
-      contactList: [],
+
+      groups: [
+        {
+          id: 1,
+          name: 'Group Dynamite',
+          photo: ''
+        },
+        {
+          id: 2,
+          name: 'Los cuchifritos',
+          photo: ''
+        },
+        {
+          id: 3,
+          name: 'Fuck This',
+          photo: ''
+        }
+    ],
+    show: false
     }
   }
 
@@ -67,6 +83,19 @@ class App extends Component {
     this.setState({ show: true });
   }
 
+
+      openModalHandler = () => {
+          this.setState({
+              isShowing: true
+          });
+      }
+
+      closeModalHandler = () => {
+          this.setState({
+              isShowing: false
+          });
+      }
+
   render() {
     return (
       <Router>
@@ -75,20 +104,36 @@ class App extends Component {
         <NavMenu onClick={this.handleShow} />
         <Header />
           </div>
-        <div className="container">
-        <Route exact path="/" render={ props => (
-          <React.Fragment>
+        <div className="bodyContainer">
+        <div className="sideBarContainer">
+        <div>
+            { this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null }
+        <button className="open-modal-btn" onClick={this.openModalHandler}>Open Modal</button>
 
-          <div style={{ height: '500px' }}>
-            <Messages messages={this.state.messages} />
-          </div>
+        <Modal
+            className="modal"
+            show={this.state.isShowing}
+            close={this.closeModalHandler}>
+                Maybe aircrafts fly very high because they don't want to be seen in plane sight?
+        </Modal>
 
-          <div>
-            <AddMessage addMessage={this.addMessage} />
           </div>
+          <Groups groups={this.state.groups} />
+        </div>
+        <div className="MessageContainer">
+          <Route exact path="/" render={ props => (
+            <React.Fragment>
+              <div style={{ height: '500px' }}>
+                <Messages messages={this.state.messages} />
+              </div>
+              <div>
+                <AddMessage addMessage={this.addMessage} />
+              </div>
+
           </React.Fragment>
          )} />
          <Route path="/about" component={About} />
+        </div>
         </div>
       </div>
       </Router>

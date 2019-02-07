@@ -1,0 +1,97 @@
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place front is invalid - may break your css so removed */
+  padding-top: 100px; /* Location of the box - don't know what this does?  If it is to move your modal down by 100px, then just change top below to 100px and remove this*/
+  left: 0;
+  right:0; /* Full width (left and right 0) */
+  top: 0;
+  bottom: 0; /* Full height top and bottom 0 */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  z-index: 9999; /* Sit on top - higher than any other z-index in your site*/
+}
+
+.modal-wrapper {
+    display: none;
+    position: fixed;
+    background: white;
+    border: 1px solid #d0cccc;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
+    margin: 100px auto 0;
+    transition: all .8s;
+    width: 60%;
+    z-index:99;
+}
+
+.modal-header {
+    background: #263238;
+    height: 40px;
+    line-height: 40px;
+    padding: 5px 20px;
+    text-align: right;
+}
+
+.modal-header h3 {
+    color: white;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-body {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.modal-footer {
+    background: #263238;
+    height: 35px;
+    padding: 15px;
+}
+
+.close-modal-btn {
+    color: white;
+    cursor: pointer;
+    float: right;
+    font-size: 30px;
+    margin: 0;
+}
+
+.close-modal-btn:hover {
+    color: black;
+}
+
+.btn-cancel, .btn-continue {
+    background: coral;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+    padding: 10px;
+}
+
+.btn-cancel {
+    background-color: #b71c1c;
+    float: left;
+}
+
+.btn-continue {
+    background-color: #1b5e20;
+    float: right;
+}
+
+.back-drop {
+    background-color: rgba(48, 49, 48, 0.42);
+    height: 100%;
+    position: fixed;
+    transition: all 1.3s;
+    width: 100%;
+}
+
+.open-modal-btn {
+    margin: 15px;
+    padding: 10px;
+    font-weight: bold;
+}

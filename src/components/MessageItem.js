@@ -6,12 +6,10 @@ export class MessageItem extends Component{
     return {
       background: this.props.message.id === 3 ?
       '#deb887':'#87ceeb',
-      padding: '5px',
-      borderBottom: 'none',
       borderRadius: this.props.message.id === 3 ? '50px 15px 5px 30px': '15px 50px 30px 5px',
       marginBottom: '10px',
       marginRight: '10px',
-      textAlign: this.props.message.id === 3 ? 'right':'left'
+      textAlign: this.props.message.id === 3 ? 'right':'left',
       }
     }
 
@@ -19,20 +17,33 @@ export class MessageItem extends Component{
       return {
         color: 'white',
         padding: '2px',
-        borderBottom: 'none',
         borderRadius: this.props.message.id === 3 ? '50px 15px 5px 10px': '15px 50px 10px 5px',
+        marginRight: '10px',
+        marginLeft: '10px',
+        marginBottom: '5px'
         }
       }
+
+    bodyStyle = () =>{
+      return {
+        color: 'black',
+        padding: '2px',
+        marginRight: '10px',
+        marginLeft: '10px',
+        fontSize: '20px',
+        marginTop: '5px',
+        marginBottom: '5px'
+      }
+    }
 
   render() {
     const {id, username, body} = this.props.message;
     return (
       <div style={this.getStyle()}>
-      <p>
-        {'  '}
         <p style={this.titleStyle() }>
-        { username + ': ' }<br />
+        { username + ': ' }
         </p>
+        <p style={ this.bodyStyle() }>
         { body }
       </p>
       </div>

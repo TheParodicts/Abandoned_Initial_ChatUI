@@ -52,7 +52,6 @@ class NavMenu extends Component {
               </NavItem>
             </Nav>
 
-
             {/* Pull right */}
             <Nav  navbar>
               <UncontrolledDropdown inNavbar>
