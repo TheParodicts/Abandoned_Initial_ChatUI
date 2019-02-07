@@ -1,0 +1,15 @@
+.mainContainer{
+padding:  10px 20px 10px 20px;
+background-color: #129056;
+}
+
+.submitForm{
+  style={{ display: 'flex' }}
+}
+.loginField{
+  style={{ flex:'10'; padding:'5px' }}
+}
+
+.loginBtn{
+    style={{ flex:'1'; padding-left: '5px'}}
+}
