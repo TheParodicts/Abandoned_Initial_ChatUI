@@ -6,6 +6,15 @@ import LoginForm from './loginComponents/LoginForm';
 import ResetPassword from './loginComponents/ResetPassword'
 
 class Login extends Component {
+constructor (props, context){
+  super(props, context);
+}
+
+onSubmit = (e, credentials) => {
+  //TODO Add actual submit protocol
+
+  alert('creds submitted: '+ (credentials.username+" "+credentials.password))
+}
 
   render() {return(
     <Router>
@@ -14,7 +23,7 @@ class Login extends Component {
           <React.Fragment>
             <h1 className="loginHeader">Login</h1>
             <div>
-              <LoginForm />
+              <LoginForm onSubmit={this.onSubmit} creds={this.state}/>
             </div>
             <div>
               <Link to="/ResetPassword">Forgot Password?</Link>
@@ -28,7 +37,6 @@ class Login extends Component {
     )
   }
 }
-
 // PropTypes
 
 
