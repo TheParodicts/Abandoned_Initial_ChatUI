@@ -19,6 +19,7 @@ class App extends Component {
     super(props, context);
 
     this.state = {
+
       messages: [
         {
           id: uuid.v4(),
@@ -56,7 +57,7 @@ class App extends Component {
         },
         {
           id: 3,
-          name: 'Fuck This',
+          name: 'The fi',
           photo: ''
         }
     ],
@@ -106,16 +107,16 @@ class App extends Component {
           </div>
         <div className="bodyContainer">
         <div className="sideBarContainer">
-        <div>
-            { this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null }
-        <button className="open-modal-btn" onClick={this.openModalHandler}>Open Modal</button>
+          <div className= "d-flex flex-row">  { this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null }
+              <label className="add-group-label"> Add A Group </label>
+              <button className="btn btn-modal" onClick={this.openModalHandler}> + </button>
 
-        <Modal
-            className="modal"
-            show={this.state.isShowing}
-            close={this.closeModalHandler}>
-                Maybe aircrafts fly very high because they don't want to be seen in plane sight?
-        </Modal>
+                  <Modal
+                      className="modal"
+                      show={this.state.isShowing}
+                      close={this.closeModalHandler}>
+                      Maybe aircrafts fly very high because they don't want to be seen in plane sight?
+                  </Modal>
 
           </div>
           <Groups groups={this.state.groups} />
@@ -123,8 +124,9 @@ class App extends Component {
         <div className="MessageContainer">
           <Route exact path="/" render={ props => (
             <React.Fragment>
-              <div style={{ height: '500px' }}>
-                <Messages messages={this.state.messages} />
+              <div className= "d-flex align-items-start flex-column bd-highlight mb-3" style={{ height: '500px', width: '100%'}}>
+                  <Messages messages={this.state.messages} />
+
               </div>
               <div>
                 <AddMessage addMessage={this.addMessage} />

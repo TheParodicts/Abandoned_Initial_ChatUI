@@ -8,23 +8,20 @@ export class GroupItem extends Component{
   getStyle = () => {
     return {
       background: '#fff',
-      padding: '10px',
-      borderBottom: 'none',
+      padding: '2px',
       borderRadius: '15px',
       marginBottom: '10px',
       marginRight: '10px',
+      marginLeft: '10px',
       textAlign: 'left'
       }
     }
 
-    titleStyle = () => {
+    iconStyle = () => {
       return {
-        color: 'white',
-        padding: '2px',
-        borderBottom: 'none',
-        borderRadius: this.props.group.id === 3 ? '50px 15px 5px 10px': '15px 50px 10px 5px',
-        display: "flex",
-        flexDirection: "row"
+        color: 'black',
+        padding: '5px',
+        padding: '10px'
         }
       }
 
@@ -32,7 +29,7 @@ export class GroupItem extends Component{
     const {id, name } = this.props.group;
     return (
       <div style={this.getStyle()}>
-        <FontAwesomeIcon icon={faHome} size="2x" />
+        <FontAwesomeIcon icon={faHome} size="2x"  />
         <label style={{padding: "10px", fontSize: "20px"}}>
           {'  '}
           { name }

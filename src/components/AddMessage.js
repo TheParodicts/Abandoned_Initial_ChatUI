@@ -14,15 +14,27 @@ export class AddMessage extends Component {
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
+  typeMessageStyle = () =>{
+    return {
+      flex:'10',
+      padding:'5px',
+      overflowX:'auto',
+      width:'100%',
+      border: "2px solid #eee",
+      resize: "none",
+      height:"50px"
+    }
+  }
+
   render() {
     return (
       <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
-        <input
+        <textarea
         type="text" name="body"
         placeholder="Add Message..."
         value={this.state.body}
         onChange={this.onChange}
-        style={{ flex:'10', padding:'5px' }}/>
+        style={this.typeMessageStyle()}/>
 
         <input
         type="submit"
