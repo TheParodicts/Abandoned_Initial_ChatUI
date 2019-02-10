@@ -12,10 +12,13 @@ onChange = (e) => this.setState(
   {[e.target.name]: e.target.value});
 
 onSubmit = (e) => {
-  this.setState({submitted:true})
-  e.preventDefault()
-  this.props.onResetPassword(e, this.state.email)
-  this.setState({submitted:true})
+  if(this.state.email!==''){
+    this.setState({submitted:true})
+    e.preventDefault()
+    this.props.onResetPassword(e, this.state.email)
+    this.setState({submitted:true})
+    }
+  else alert("No email submitted. Please enter your email.")
 }
 
 render() {

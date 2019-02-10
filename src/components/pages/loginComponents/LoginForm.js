@@ -10,6 +10,9 @@ class LoginForm extends Component {
 
 onSubmit = (e)=> {
   e.preventDefault()
+  if(this.state.username===''|this.state.password===''){
+    return
+  }
   this.props.onLogin(e, this.state)
 };
 

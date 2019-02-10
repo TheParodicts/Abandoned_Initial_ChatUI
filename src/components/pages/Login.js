@@ -5,10 +5,16 @@ import './CSS/Login.css';
 import LoginForm from './loginComponents/LoginForm';
 import ResetPassword from './loginComponents/ResetPassword'
 
+const TESTCREDENTIALS={
+  email:'brianrodrig@gmail.com',
+  password:'manueldb'
+}
+
 const paths={
   loginPath:"/login",
   resetPassPath:"/ResetPassword"
 }
+
 class Login extends Component {
   constructor (props, context){
     super(props, context);
@@ -17,7 +23,14 @@ class Login extends Component {
   }
 
   onLogin = (e, credentials) => {
-    //TODO Add actual submit protocol
+    //TODO Add actual submit protocol and redirect
+    if (credentials.username!==TESTCREDENTIALS.email){
+      alert('Username not found. Please enter correct username or create an account.')
+      return}
+
+    if (credentials.password!==TESTCREDENTIALS.password){
+      alert('Wrong password. Please input correct password.')
+      return}
 
     alert('creds submitted: '+ (credentials.username+" "+credentials.password))
   }
