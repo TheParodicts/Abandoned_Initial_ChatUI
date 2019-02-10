@@ -11,9 +11,9 @@ class ResetPassword extends Component{
 render(){return (
       <React.Fragment>
         <ResetHeader />
-        <ResetPassForm onResetPassword = {this.props.onResetPassword}/>
+        <ResetPassForm onResetPassword = {this.props.onResetPassword}
+         loginPath={this.props.loginPath}/>
       </React.Fragment>)
   }
-
 }
 export default ResetPassword;

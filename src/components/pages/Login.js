@@ -1,46 +1,52 @@
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router,Redirect, Route} from 'react-router-dom';
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import './CSS/Login.css';
 import LoginForm from './loginComponents/LoginForm';
 import ResetPassword from './loginComponents/ResetPassword'
 
+const paths={
+  loginPath:"/login",
+  resetPassPath:"/ResetPassword"
+}
 class Login extends Component {
-constructor (props, context){
-  super(props, context);
-}
-
-onLogin = (e, credentials) => {
-  //TODO Add actual submit protocol
-
-  alert('creds submitted: '+ (credentials.username+" "+credentials.password))
-}
+  constructor (props, context){
+    super(props, context);
 
 
-onResetPassword = (e, email) => {
-  // TODO add Actual reset password functionality
-  alert('Reset email sent to: '+ email)
+  }
 
-}
+  onLogin = (e, credentials) => {
+    //TODO Add actual submit protocol
+
+    alert('creds submitted: '+ (credentials.username+" "+credentials.password))
+  }
+
+
+  onResetPassword = (e, email) => {
+    // TODO add Actual reset password functionality
+    alert('Reset email sent to: '+ email)}
+
 
   render() {return(
     <Router>
       <div className="mainContainer">
-        <Route path="/login" render= {props =>(
+          <Route path={paths.loginPath}render= {props =>(
           <React.Fragment>
             <h1 className="loginHeader">Login</h1>
             <div>
               <LoginForm onLogin={this.onLogin} creds={this.state}/>
             </div>
             <div>
-              <Link to="/ResetPassword">Forgot Password?</Link>
+              <Link to={paths.resetPassPath}>Forgot Password?</Link>
             </div>
           </React.Fragment>)}>
         </Route>
-        <Route exact path="/ResetPassword" render = {props =>(
+        <Route exact path={paths.resetPassPath} render = {props =>(
           <React.Fragment>
             <div>
-              <ResetPassword onResetPassword= {this.onResetPassword}/>
+              <ResetPassword onResetPassword= {this.onResetPassword}
+               loginPath={paths.loginPath}/>
             </div>
           </React.Fragment>)}>
         </Route>
