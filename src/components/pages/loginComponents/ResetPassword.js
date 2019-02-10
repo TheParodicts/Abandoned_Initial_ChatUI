@@ -1,14 +1,19 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ResetPassForm from "./ResetPassForm"
 import ResetHeader from './ResetHeader'
 
-function ResetPassword(){
-  return (
-    <React.Fragment>
-      <ResetHeader />
-      <ResetPassForm />
-    </React.Fragment>
-  )
-}
 
+class ResetPassword extends Component{
+  constructor (props, context){
+    super(props, context);
+  }
+
+render(){return (
+      <React.Fragment>
+        <ResetHeader />
+        <ResetPassForm onResetPassword = {this.props.onResetPassword}/>
+      </React.Fragment>)
+  }
+
+}
 export default ResetPassword;

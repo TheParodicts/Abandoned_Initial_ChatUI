@@ -10,10 +10,17 @@ constructor (props, context){
   super(props, context);
 }
 
-onSubmit = (e, credentials) => {
+onLogin = (e, credentials) => {
   //TODO Add actual submit protocol
 
   alert('creds submitted: '+ (credentials.username+" "+credentials.password))
+}
+
+
+onResetPassword = (e, email) => {
+  // TODO add Actual reset password functionality
+  alert('Reset email sent to: '+ email)
+
 }
 
   render() {return(
@@ -23,15 +30,20 @@ onSubmit = (e, credentials) => {
           <React.Fragment>
             <h1 className="loginHeader">Login</h1>
             <div>
-              <LoginForm onSubmit={this.onSubmit} creds={this.state}/>
+              <LoginForm onLogin={this.onLogin} creds={this.state}/>
             </div>
             <div>
               <Link to="/ResetPassword">Forgot Password?</Link>
             </div>
           </React.Fragment>)}>
         </Route>
-        <Route exact path="/ResetPassword"
-        component = {ResetPassword}/>
+        <Route exact path="/ResetPassword" render = {props =>(
+          <React.Fragment>
+            <div>
+              <ResetPassword onResetPassword= {this.onResetPassword}/>
+            </div>
+          </React.Fragment>)}>
+        </Route>
       </div>
     </Router>
     )
