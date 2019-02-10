@@ -2,6 +2,7 @@ import { BrowserRouter as Router,Redirect, Route} from 'react-router-dom';
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import './CSS/Login.css';
+import CreateUser from './loginComponents/CreateUser';
 import LoginForm from './loginComponents/LoginForm';
 import ResetPassword from './loginComponents/ResetPassword'
 
@@ -12,7 +13,8 @@ const TESTCREDENTIALS={
 
 const paths={
   loginPath:"/login",
-  resetPassPath:"/ResetPassword"
+  resetPassPath:"/ResetPassword",
+  createAccountPath:"/NewUser"
 }
 
 class Login extends Component {
@@ -36,11 +38,22 @@ class Login extends Component {
   }
 
 
+  onCreateUser = (e, credentials) => {
+    //TODO Add actual submit protocol and redirect
+    if (credentials.email===TESTCREDENTIALS.email){
+      alert('Email already exists. Please enter a different email.')
+      return}
+
+
+    alert('New User account created Successfully!'+JSON.stringify(credentials))
+  }
+
+
   onResetPassword = (e, email) => {
     // TODO add Actual reset password functionality
     alert('Reset email sent to: '+ email)}
 
-
+//TODO create an account creation path.
   render() {return(
     <Router>
       <div className="mainContainer">
@@ -49,6 +62,10 @@ class Login extends Component {
             <h1 className="loginHeader">Login</h1>
             <div>
               <LoginForm onLogin={this.onLogin} creds={this.state}/>
+            </div>
+            <div>
+
+              <Link to={paths.createAccountPath}>Create an Account</Link>
             </div>
             <div>
               <Link to={paths.resetPassPath}>Forgot Password?</Link>
@@ -62,6 +79,14 @@ class Login extends Component {
                loginPath={paths.loginPath}/>
             </div>
           </React.Fragment>)}>
+          </Route>
+          <Route exact path={paths.createAccountPath} render = {props =>(
+            <React.Fragment>
+              <div>
+              <CreateUser onCreateUser= {this.onCreateUser}
+               loginPath={paths.loginPath}/>
+              </div>
+            </React.Fragment>)}>
         </Route>
       </div>
     </Router>
