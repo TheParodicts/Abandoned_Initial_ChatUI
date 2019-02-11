@@ -10,7 +10,7 @@ class CreateUser extends Component{
 render(){return (
       <React.Fragment>
         <div>
-          <h1>Create a new Account </h1>
+          <h1 className='loginHeader'>Create a new Account </h1>
         </div>
         <div>
           <NewUserForm onCreateUser = {this.props.onCreateUser}

@@ -65,10 +65,10 @@ class Login extends Component {
             </div>
             <div>
 
-              <Link to={paths.createAccountPath}>Create an Account</Link>
+              <Link className="loginLinks" to={paths.createAccountPath}>Create an Account</Link>
             </div>
             <div>
-              <Link to={paths.resetPassPath}>Forgot Password?</Link>
+              <Link className="loginLinks" to={paths.resetPassPath}>Forgot Password?</Link>
             </div>
           </React.Fragment>)}>
         </Route>
